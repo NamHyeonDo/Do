@@ -165,7 +165,7 @@ end = time.time()
 print("multi end", end - start) """
 
 # 병렬처리
-import time
+""" import time
 import multiprocessing as mp
 
 def counter(str_name):
@@ -186,4 +186,129 @@ process2.join()
 process3.join()
 end = time.time()
 
-print("proc-end", end - start)
+print("proc-end", end - start) """
+
+# 비동기 처리
+
+""" import asyncio
+import random as rd
+import time
+
+async def tester (name):
+    snum = rd.randint(10, 20)
+    print(f"{name} - {snum}")
+    for i in range(snum):
+        await asyncio.sleep(1)
+        print(f"{name} - {snum} - {i}")
+    print(f"end of {name}")
+    
+async def main():
+    task1 = asyncio.create_task(tester("1test"))
+    task2 = asyncio.create_task(tester("2test"))
+    task3 = asyncio.create_task(tester("3test"))
+    
+    print("start")
+    start = time.time()
+    await task1
+    await task2
+    await task3
+    end = time.time() 
+    print("end", end - start)
+    
+if __name__  == '__main__':
+    asyncio.run(main()) """
+    
+# 랜덤 없이 숫자를 넣어준것도 있다 비도기 방식의 선언 asyncio에서 지정
+
+#스케쥴
+""" import time
+import sched
+
+start = time.time()
+
+def tester(name):
+    print(f"start-time{time.time() - start}")
+    for i in range(3):
+        print(f"{name} - {i}")
+    print(f"end of {name}")
+
+def run():  
+    s = sched.scheduler()
+    s.enter(5, 1, tester('1num',))
+    s.enter(3, 1, tester('2num',))
+    s.enter(7, 1, tester('3num',))
+    s.run()
+    
+if __name__ == "__main__" :
+    run()
+    #main()
+    print("end") """
+    
+# 문자열 비교
+""" import diff_match_patch as dm
+
+origin = "To be or not to be, That is a question!"
+copyed = "To be and not to be, That is a question!"
+
+dmp = dm()
+diff = dmp.diff_main(origin, copyed)
+dmp.diff_cleanupSemantic(diff)
+
+for d in diff:
+    print(d) """
+
+# 테스트용 데이터 생성 
+""" from faker import Faker as fk
+temp = fk()
+print(temp.name())
+
+with open ("fktemp.csv", "w", newline='') as f:
+    for i in range(30):
+    f.write(temp.name() + "," +
+        temp.address() + "," +   
+        temp.postcode() + "," +   
+        temp.country() + "," +   
+        temp.company() + "," +   
+        temp.job() + "," +   
+        temp.- phone_number() + "," +   
+        temp.email() + "," +   
+        temp.user_name() + "," +   
+        temp.ipv4_private() + "," +   
+        temp.catch_phrase() + "," +   
+        temp.color_name() + "\n") """
+        
+# 시스템명령어 사용
+""" import subprocess as sp
+#res = sp.run(["cmd", "/c", "dir"], capture_output=True)
+#res = sp.run(["cmd", "/c", "dir"], capture_output=False)
+#res = sp.run(["cmd", "/c", "ipconfig", "all"], capture_output=True)
+res = sp.run(["cmd", "/c", "ipconfig", "all"], capture_output=False)
+print(res) """
+
+#에러처리
+import traceback as tb
+
+def taster():
+    #return 1/0
+    return 1
+
+def caller():
+    taster()
+    
+def main():
+    try:
+        caller()
+        
+    #except ZeroDivisionError:
+        #print("zde error")
+        
+    except ValueError:
+        print("ve error")
+    except Exception as ex:
+        print("ex error")
+    else :
+        print("ok")
+    finally:
+        print("end")
+        
+main()
