@@ -1,8 +1,8 @@
-import FinanceDataReader as fdr
+""" import FinanceDataReader as fdr
 ksp = fdr.DataReader("KS11", "2001")
 print(ksp)
 print("\n----------------------------------------------\n")
-
+ """
 """ res = ksp["High"].max()
 print(res)
 
@@ -44,3 +44,25 @@ df["분양가"].convert_dtypes()
 df.dtypes
 
 df.to_numpy() """
+
+""" res = df.iloc[2][1]
+print(res)
+
+res = df[df.index > 3560]
+print(res) """
+
+""" res = df[df.연도 == 2023]
+print(res) """
+
+""" res = df[(df.연도 == 2023) & (df.지역명 == "서울") & (df.월 == 6)]
+print(res) """
+
+""" df2.dropna(how="any", inplace=True) """
+
+""" res = pd.isna(df1)
+res = pd.isna(df2)
+print(res) """
+
+res = df.groupby(["지역명", "연도", "월"]).sum()
+df.groupby(["지역명", "연도", "월"])["분양가"].agg("sum")
+print(res)
