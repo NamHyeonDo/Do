@@ -1,4 +1,4 @@
-""" import matplotlib.pyplot as plt """
+import matplotlib.pyplot as plt
 
 """ value = [1, 2, 3, 4]
 res = plt.plot(value)
@@ -94,5 +94,57 @@ plt.bar(x_years, y_data, color=clr, align="edge", width=0.5)
 plt.bar(x_years, y_data, color=clr, align="edge", width=0.5)
 plt.show() """
 
-import matplotlib.pyplot as plt
-plt.barh(x_years, y_data)
+""" import matplotlib.pyplot as plt
+plt.barh(x_years, y_data) """
+
+""" # 색상 설정
+plt.grid(axis="y", color="g")
+plt.grid(axis="y", color="b")
+
+# 투명도 설정
+plt.grid(axis="y", color="g", alpha=0.5)
+
+# 선 종류 선택
+plt.grid(axis="y", color="g", alpha=0.5, linestyle="-")
+plt.grid(axis="y", color="g", alpha=0.5, linestyle="--")
+plt.grid(axis="y", color="g", alpha=0.5, linestyle="-.") """
+
+""" # 사용데이터
+x1 = [2,3,6,7,10]
+x2 = [1,4,5,8,9]
+
+y1 = [1,4,5,8,9]
+y2 = [2,4,6,8,10]
+
+plt.subplot(2, 1, 1)    # 1set
+plt.plot(x1, y1, "o-")
+
+plt.subplot(2, 1, 2)
+plt.plot(x2, y2, ".-") 
+
+plt.subplot(2, 1, 1)
+
+plt.subplot(3, 1, 1)
+# ~
+plt.subplot(3, 1, 3)
+
+plt.style.use("bmh")
+
+plt.savefig("data/img.jpg")
+plt.savefig("data/img.png")"""
+
+""" x_years = ["2020", "2021", "2022"]
+y_data = [100, 400, 900]
+
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)
+ax1.bar(x_years, y_data)
+ax2.bar(x_years, y_data)
+ax3.bar(x_years, y_data)
+ax4.bar(x_years, y_data)
+
+ax1.bar(x_years, y_data, cloor="aquamarine", edgecolor = "black", hatch="/")
+ax1.bar(x_years, y_data, cloor="salmon", edgecolor = "black", hatch="\\")
+ax1.bar(x_years, y_data, cloor="navajowhite", edgecolor = "black", hatch="+")
+ax1.bar(x_years, y_data, cloor="lightskyblue", edgecolor = "black", hatch="*") 
+
+plt.show() """
